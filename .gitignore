@@ -22,3 +22,26 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# Variables d'environnement
+.env
+.env.*
+!.env.example
+
+# Dépendances
+node_modules/
+
+# Compilation
+dist/
+build/
+
+# Logs
+*.log
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Couverture des tests
+coverage/
