@@ -1,0 +1,79 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// =====================================
+// UTILISATEUR
+// =====================================
+
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+
+  files File[]
+}
+
+// =====================================
+// FICHIER
+// =====================================
+
+model File {
+  id                 String     @id @default(uuid()) @db.Uuid
+  userId             String?    @db.Uuid
+  originalName       String
+  storageKey         String     @unique
+  mimeType           String
+  sizeBytes          BigInt
+  shareTokenHash     String     @unique
+  accessPasswordHash String?
+  expiresAt          DateTime
+  uploadedAt         DateTime   @default(now())
+  status             FileStatus @default(PENDING)
+
+  user      User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+  downloads DownloadHistory[]
+
+  @@index([userId])
+}
+
+// =====================================
+// HISTORIQUE DES TÉLÉCHARGEMENTS
+// =====================================
+
+model DownloadHistory {
+  id           String         @id @default(uuid()) @db.Uuid
+  fileId       String         @db.Uuid
+  downloadedAt DateTime       @default(now())
+  status       DownloadStatus
+  anonymizedIp String?
+
+  file File @relation(fields: [fileId], references: [id], onDelete: Cascade)
+
+  @@index([fileId])
+}
+
+// =====================================
+// ENUMÉRATIONS
+// =====================================
+
+enum FileStatus {
+  PENDING
+  UPLOADING
+  ACTIVE
+  EXPIRED
+  DELETED
+  FAILED
+}
+
+enum DownloadStatus {
+  SUCCESS
+  FAILED
+}
