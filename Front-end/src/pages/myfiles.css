@@ -1,0 +1,348 @@
+/* ============================================================
+   Mon espace — Mes fichiers
+   ============================================================ */
+
+.files {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--color-surface);
+}
+
+/* ------------------ Barre latérale ------------------ */
+
+.files__sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  padding: var(--space-5);
+  background: var(--gradient-brand);
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  box-shadow: var(--shadow-card);
+}
+
+.files__sidebar--open {
+  transform: translateX(0);
+}
+
+.files__sidebar-close {
+  align-self: flex-start;
+  margin-bottom: var(--space-4);
+  padding: 6px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--color-ink);
+}
+
+.files__logo {
+  margin-bottom: var(--space-6);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.files__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.files__nav-item {
+  display: block;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.files__nav-item--active {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.files__sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.files__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-ink);
+  min-width: 0;
+}
+
+.files__user span:last-child {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.files__user strong {
+  font-size: var(--text-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.files__user small {
+  font-size: var(--text-xs);
+  opacity: 0.75;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.files__logout {
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-ink);
+  font-size: var(--text-xs);
+  text-decoration: underline;
+}
+
+.files__logout:hover {
+  text-decoration: none;
+}
+
+.files__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* ------------------ Zone principale ------------------ */
+
+.files__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--color-surface);
+}
+
+.files__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.files__topbar-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.files__burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.files__user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.files__topbar-actions {
+  display: none;
+}
+
+/* ------------------ Contenu ------------------ */
+
+.files__content {
+  flex: 1;
+  width: 100%;
+  max-width: 900px;
+  padding: var(--space-6) var(--space-5);
+}
+
+.files__title {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.files__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.files__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-4);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.files__empty p {
+  margin: 0;
+}
+
+.files__copyright {
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+/* ------------------ Ligne de fichier ------------------ */
+
+.filerow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  transition: background-color 0.15s ease;
+}
+
+.filerow:hover {
+  background: var(--color-surface-alt);
+}
+
+.filerow--expired {
+  background: var(--color-surface-alt);
+}
+
+.filerow__icon {
+  display: inline-flex;
+  color: var(--color-ink);
+}
+
+.filerow__meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-right: auto;
+}
+
+.filerow__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filerow__sub {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+.filerow__expired-note {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  text-align: right;
+  max-width: 180px;
+}
+
+.filerow__actions {
+  display: inline-flex;
+  gap: var(--space-2);
+}
+
+.filerow__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-ink-soft);
+}
+
+.filerow__action:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filerow__action--danger:hover {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+/* ------------------ Desktop ------------------ */
+
+@media (min-width: 768px) {
+  .files__sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    transform: none;
+    width: 220px;
+    box-shadow: none;
+  }
+
+  .files__sidebar-close,
+  .files__overlay {
+    display: none;
+  }
+
+  .files__topbar {
+    padding: var(--space-4) var(--space-8);
+  }
+
+  .files__topbar-mobile {
+    display: none;
+  }
+
+  .files__topbar-actions {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .files__content {
+    padding: var(--space-6) var(--space-8);
+  }
+
+  .files__copyright {
+    padding: var(--space-4) var(--space-8);
+  }
+}

@@ -1,0 +1,14 @@
+.auth__card {
+  max-width: 440px;
+}
+
+.auth__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Le lien passe au-dessus du bouton, comme dans la maquette */
+.auth__footer .card__link {
+  order: -1;
+}

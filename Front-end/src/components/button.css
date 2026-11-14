@@ -1,0 +1,105 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.btn--md {
+  padding: 9px 16px;
+  font-size: var(--text-sm);
+}
+
+.btn--sm {
+  padding: 6px 12px;
+  font-size: var(--text-xs);
+}
+
+.btn--block {
+  display: flex;
+  width: 100%;
+}
+
+/* Primaire : fond pêche, texte + bordure orange */
+.btn--primary {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: #fbe0c6;
+}
+
+.btn--primary:disabled {
+  background: var(--color-primary-soft);
+  border-color: var(--color-disabled);
+  color: var(--color-disabled);
+}
+
+/* Sombre : fond noir, texte blanc */
+.btn--dark {
+  background: var(--color-ink);
+  color: #fff;
+}
+
+.btn--dark:hover:not(:disabled) {
+  background: #000;
+}
+
+/* Fantôme : fond gris clair, texte gris (actions secondaires) */
+.btn--ghost {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-ink-soft);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: var(--color-surface-alt);
+}
+
+.btn--ghost:disabled {
+  background: #ececec;
+  border-color: #ececec;
+  color: var(--color-disabled);
+}
+
+/* Danger */
+.btn--danger {
+  background: var(--color-danger-soft);
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: #f8cfcf;
+}
+
+/* Spinner de chargement */
+.btn__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

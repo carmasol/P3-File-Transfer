@@ -1,0 +1,50 @@
+.home {
+  gap: var(--space-8);
+}
+
+.home__title {
+  max-width: 320px;
+}
+
+.home__cloud {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #2a1113;
+  color: #fff;
+  transition: transform 0.15s ease;
+}
+
+.home__cloud:hover {
+  transform: scale(1.05);
+}
+
+/* Halo circulaire autour du bouton nuage */
+.home__cloud-halo {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: rgba(42, 17, 19, 0.28);
+}
+
+.home__cloud > svg {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .home__cloud {
+    width: 76px;
+    height: 76px;
+  }
+
+  .home__title {
+    max-width: 420px;
+    font-size: 1.375rem;
+  }
+}

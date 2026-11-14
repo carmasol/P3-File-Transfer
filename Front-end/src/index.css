@@ -1,111 +1,188 @@
+/* ============================================================
+   DataShare — Design tokens & styles globaux
+   ============================================================ */
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* ---- Couleurs de marque ---- */
+  --color-gradient-top: #fba06a;
+  --color-gradient-bottom: #e75a52;
+  --gradient-brand: linear-gradient(
+    180deg,
+    var(--color-gradient-top) 0%,
+    var(--color-gradient-bottom) 100%
+  );
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --color-ink: #1c1c1e; /* texte principal / logo */
+  --color-ink-soft: #3d3d3f;
+  --color-muted: #8a8a8e; /* placeholders, textes secondaires */
+  --color-disabled: #b9b9bd;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --color-primary: #ec7d3c; /* orange d'accent (boutons, liens) */
+  --color-primary-soft: #fdeedd; /* fond pêche clair des boutons */
+  --color-danger: #d64545;
+  --color-danger-soft: #fadddd;
+  --color-warning: #e8a13c;
+  --color-warning-soft: #fdeede;
+  --color-info: #3e7fc1;
+  --color-info-soft: #ddebfa;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --color-surface: #ffffff;
+  --color-surface-alt: #faf3ec;
+  --color-border: #e9e2da;
+  --color-border-soft: #f1ede8;
+
+  /* ---- Typographie ---- */
+  --font-sans:
+    'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-hero: clamp(1.25rem, 2.2vw + 0.5rem, 1.75rem);
+
+  /* ---- Espacements ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* ---- Rayons ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  /* ---- Ombres ---- */
+  --shadow-card: 0 10px 30px rgba(30, 10, 5, 0.18);
+  --shadow-soft: 0 2px 10px rgba(30, 10, 5, 0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+/* ---- Reset ---- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
 }
 
 body {
   margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-ink);
+  background-color: #e9e4e0;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+button {
+  font: inherit;
+  cursor: pointer;
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+
+input,
+select {
+  font: inherit;
 }
-p {
+
+a {
+  color: inherit;
+}
+
+/* ---- Utilitaires partagés ---- */
+
+/* Écran plein avec fond dégradé de marque */
+.app-gradient {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--gradient-brand);
+}
+
+.app-gradient__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+/* Titre des héros (« Tu veux partager un fichier ? ») */
+.hero-title {
   margin: 0;
+  font-size: var(--text-hero);
+  font-weight: 500;
+  color: var(--color-ink);
+  text-align: center;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* Carte blanche centrale (formulaires, états) */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6) var(--space-5);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.card__title {
+  margin: 0 0 var(--space-5);
+  text-align: center;
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.card__footer {
+  margin-top: var(--space-5);
+}
+
+/* Lien d'action centré dans les cartes (ex. « Créer un compte ») */
+.card__link {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+  text-align: center;
+  text-decoration: underline;
+}
+
+.card__link:hover {
+  text-decoration: none;
+}
+
+/* Barre de copyright en bas des écrans */
+.copyright {
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (min-width: 768px) {
+  .copyright {
+    padding: var(--space-5) var(--space-8);
+  }
 }
